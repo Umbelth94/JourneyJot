@@ -11,3 +11,5 @@ function randomFunction() {
 }
 
 randomFunction();
+
+console.log(evenMoreTesting);
