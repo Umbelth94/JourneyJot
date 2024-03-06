@@ -5,7 +5,7 @@ var evenMoreTesting = "Laa la laaa";
 
 console.log(evenMoreTesting);
 
-function randomFunction() {
+function                randomFunction() {
     console.log("hey good job nerd");
     return;
 }
