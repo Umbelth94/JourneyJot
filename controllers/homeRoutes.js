@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
+const User = require("../models/");
 
 //Need these models built
 // const { Trip, User, Comment} = require('../models');
@@ -32,17 +33,17 @@ router.get("/journeys", async (req, res) => {
 });
 
 //Renders user dashboard
-router.get("/dashboard", withAuth, async (req, res) => {
+router.get("/trips", withAuth, async (req, res) => {
     try {
-        // const userData = await User.findByPk(req.session.user_id, {
-        //     attributes: {exlude: ["password"]},
-        //     // include: [{ model: Trip }],
-        // });
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exlude: ["password"] },
+            // include: [{ model: Trip }],
+        });
 
-        // const user = userData.get({ plain: true });
+        const user = userData.get({ plain: true });
 
-        res.render("dashboard", {
-            // ...user,
+        res.render("myTrips", {
+            ...user,
             logged_in: true,
         });
     } catch (err) {
@@ -57,3 +58,5 @@ router.get("/adventure", withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;
