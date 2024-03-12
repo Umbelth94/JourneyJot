@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../../models");
+const { User, Trip } = require("../../models");
 
 //Create a user
 router.post("/signup", async (req, res) => {
@@ -61,10 +61,7 @@ router.post("/logout", (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const usersData = await User.findAll({
-            // Uncomment this once we have all the trip data
-            // include: [
-            //     {model: Trip},
-            // ],
+            include: [{ model: Trip }],
         });
         res.json(usersData);
     } catch (err) {
