@@ -40,10 +40,6 @@ User.init(
                 isEmail: true,
             },
         },
-        profilePic: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
     },
     {
         hooks: {

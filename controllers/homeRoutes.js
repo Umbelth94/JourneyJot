@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const User = require("../models/");
-
-//Need these models built
-// const { Trip, User, Comment} = require('../models');
+const { User } = require("../models/");
 
 //Renders the homepage
 router.get("/", async (req, res) => {
