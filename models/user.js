@@ -33,7 +33,7 @@ User.init(
             },
         },
         email: {
-            type: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
@@ -66,7 +66,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "User",
+        modelName: "user",
     },
 );
 

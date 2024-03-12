@@ -1,4 +1,4 @@
-const User = require("./user.js");
+const User = require("./User.js");
 const Trip = require("./trip.js");
 const Comment = require("./comment.js");
 
@@ -31,7 +31,7 @@ User.hasMany(Comment, {
 });
 // trip-comment
 Trip.hasMany(Comment, {
-    foreignKey: "user_id",
+    foreignKey: "post_id",
     onDelete: "CASCADE",
     hooks: true,
 });
