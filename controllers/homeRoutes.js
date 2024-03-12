@@ -5,7 +5,7 @@ const { User } = require("../models/");
 //Renders the homepage
 router.get("/", async (req, res) => {
     try {
-        res.render("main");
+        res.render("homepage");
     } catch (err) {
         res.status(500).json(err);
     }
