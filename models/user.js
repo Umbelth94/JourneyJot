@@ -33,7 +33,7 @@ User.init(
             },
         },
         email: {
-            type: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {

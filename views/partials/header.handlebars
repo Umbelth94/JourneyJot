@@ -1,0 +1,18 @@
+<header class="bg-mine flex flew-row justify-between content-center items-center py-10 px-16">
+            <a id="theTitle" href="/" class="color-mine text-5xl font-bold text-shadow">
+                JOURNEYJ <i class="fa-solid fa-location-dot"></i> T
+            </a>
+            <nav>
+                {{#if logged_in}}
+                <a href="/" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Home</a>
+                <a href="/trips" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Journeys</a>
+                <a href="/dashboard" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Plan an adventure</a>
+                <a href="/dashboard" id="homeButton" class="text-3xl px-5 font-bold text-shadow">My trips</a>
+                <button  class="logout text-3xl px-10 login-button color-mine font-bold text-shadow" id="logout" >Logout</button>
+                {{else}}
+                <a href="/" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Home</a>
+                <a href="/trips" id="homeButton" class="text-3xl px-5 font-bold text-shadow" style="border-left: solid 2px rgb(214, 214, 214)">Journeys</a>
+                <a href="/login" id="homeButton" class="text-3xl px-10 login-button color-mine font-bold text-shadow">Sign up</a>
+                {{/if}}
+            </nav>
+</header>
