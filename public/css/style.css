@@ -225,9 +225,31 @@ input:checked + label .description {
     filter: drop-shadow(0 0 0.75rem rgb(27, 27, 27));
 }
 
+.image:hover {
+    filter: drop-shadow(0 0 0.75rem #99f2cd);
+    cursor: pointer;
+}
 .image1 {
     animation: animation_A 30s infinite;
 }
 .image2 {
     animation: animation_B 30s infinite;
+}
+
+#theTitle:hover,
+#homeButton:hover,
+#logout:hover,
+#showing:hover,
+#startButton:hover {
+    filter: drop-shadow(0 0 0.75rem #99f2cd);
+    cursor: pointer;
+}
+
+.add-journey {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 20px;
 }
