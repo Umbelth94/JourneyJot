@@ -5,13 +5,13 @@
             <nav>
                 {{#if logged_in}}
                 <a href="/" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Home</a>
-                <a href="/trips" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Journeys</a>
-                <a href="/dashboard" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Plan an adventure</a>
-                <a href="/dashboard" id="homeButton" class="text-3xl px-5 font-bold text-shadow">My trips</a>
+                <a href="/journeys" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Journeys</a>
+                <a href="/adventures" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Plan an adventure</a>
+                <a href="/trips" id="homeButton" class="text-3xl px-5 font-bold text-shadow">My trips</a>
                 <button  class="logout text-3xl px-10 login-button color-mine font-bold text-shadow" id="logout" >Logout</button>
                 {{else}}
                 <a href="/" id="homeButton" class="text-3xl px-5 font-bold text-shadow">Home</a>
-                <a href="/trips" id="homeButton" class="text-3xl px-5 font-bold text-shadow" style="border-left: solid 2px rgb(214, 214, 214)">Journeys</a>
+                <a href="/journeys" id="homeButton" class="text-3xl px-5 font-bold text-shadow" style="border-left: solid 2px rgb(214, 214, 214)">Journeys</a>
                 <a href="/login" id="homeButton" class="text-3xl px-10 login-button color-mine font-bold text-shadow">Sign up</a>
                 {{/if}}
             </nav>
