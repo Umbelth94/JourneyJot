@@ -43,7 +43,7 @@ router.get("/trips", withAuth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render("myTrips", {
+        res.render("trips", {
             ...user,
             logged_in: true,
         });
@@ -52,9 +52,9 @@ router.get("/trips", withAuth, async (req, res) => {
     }
 });
 
-router.get("/adventure", withAuth, async (req, res) => {
+router.get("/adventures", withAuth, async (req, res) => {
     try {
-        res.render("adventure", {
+        res.render("adventures", {
             logged_in: req.session.logged_in,
         });
     } catch (err) {

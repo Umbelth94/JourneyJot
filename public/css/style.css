@@ -240,7 +240,8 @@ input:checked + label .description {
 #homeButton:hover,
 #logout:hover,
 #showing:hover,
-#startButton:hover {
+#startButton:hover,
+#submit:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
 }
@@ -252,4 +253,26 @@ input:checked + label .description {
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     padding: 20px;
+}
+
+.link:hover {
+    filter: drop-shadow(0 0 0.75rem #99f2cd);
+}
+
+/* #beach,
+#camping,
+#skiing,
+#other {
+    display: none;
+} */
+.add-journey .form2 .trip-types .selected input:checked + label {
+    filter: drop-shadow(0 0 0.75rem #99f2cd);
+}
+.image-input {
+    border-radius: 15px;
+}
+
+.image-input:hover {
+    filter: drop-shadow(0 0 0.75rem #99f2cd);
+    cursor: pointer;
 }
