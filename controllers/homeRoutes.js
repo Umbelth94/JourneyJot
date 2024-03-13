@@ -3,11 +3,17 @@ const withAuth = require("../utils/auth");
 const { User } = require("../models/");
 
 //Renders the homepage
-router.get("/", async (req, res) => {
-    try {
-        res.render("homepage");
-    } catch (err) {
-        res.status(500).json(err);
+router.get("/", (req, res) => {
+    if (req.session.logged_in) {
+        // User is logged in, render homepage with logged_in flag
+        res.render("homepage", {
+            logged_in: true,
+        });
+    } else {
+        // User is not logged in, render homepage without logged_in flag
+        res.render("homepage", {
+            logged_in: false,
+        });
     }
 });
 
