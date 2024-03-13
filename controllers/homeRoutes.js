@@ -4,16 +4,12 @@ const { User } = require("../models/");
 
 //Renders the homepage
 router.get("/", (req, res) => {
-    if (req.session.logged_in) {
-        // User is logged in, render homepage with logged_in flag
+    try {
         res.render("homepage", {
-            logged_in: true,
+            logged_in: req.session.logged_in,
         });
-    } else {
-        // User is not logged in, render homepage without logged_in flag
-        res.render("homepage", {
-            logged_in: false,
-        });
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
@@ -29,7 +25,9 @@ router.get("/login", async (req, res) => {
 //Renders journeys page
 router.get("/journeys", async (req, res) => {
     try {
-        res.render("journeys");
+        res.render("journeys", {
+            logged_in: req.session.logged_in,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -45,7 +43,7 @@ router.get("/trips", withAuth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render("myTrips", {
+        res.render("trips", {
             ...user,
             logged_in: true,
         });
@@ -54,9 +52,11 @@ router.get("/trips", withAuth, async (req, res) => {
     }
 });
 
-router.get("/adventure", withAuth, async (req, res) => {
+router.get("/adventures", withAuth, async (req, res) => {
     try {
-        res.render("adventure");
+        res.render("adventures", {
+            logged_in: req.session.logged_in,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
