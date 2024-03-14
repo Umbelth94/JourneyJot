@@ -167,11 +167,11 @@
     display: none;
 }
 
-input:checked + label {
+input[name="slide"]:checked + label {
     width: 70%;
 }
 
-input:checked + label .description {
+input[name="slide"]:checked + label .description {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
@@ -259,13 +259,13 @@ input:checked + label .description {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
 }
 
-/* #beach,
+#beach,
 #camping,
 #skiing,
 #other {
     display: none;
-} */
-.add-journey .form2 .trip-types .selected input:checked + label {
+}
+input[name="option"]:checked + img {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
 }
 .image-input {

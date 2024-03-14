@@ -1,0 +1,37 @@
+[
+    {
+      "journey_title": "Sunset Paradise",
+      "vacation_type": "Beach",
+      "location": "Maldives",
+      "content": "Experience the breathtaking beauty of Maldives' beaches and enjoy the crystal-clear waters.",
+      "user_id": 2
+    },
+    {
+      "journey_title": "Mountain Adventure",
+      "vacation_type": "Skiing",
+      "location": "Aspen, Colorado, USA",
+      "content": "Embark on an exhilarating skiing adventure in the stunning slopes of Aspen.",
+      "user_id": 3
+    },
+    {
+      "journey_title": "Campfire Tales",
+      "vacation_type": "Camping",
+      "location": "Yellowstone National Park, USA",
+      "content": "Explore the wilderness of Yellowstone National Park and bond over campfire tales under the starlit sky.",
+      "user_id": 1
+    },
+    {
+      "journey_title": "Coastal Retreat",
+      "vacation_type": "Beach",
+      "location": "Amalfi Coast, Italy",
+      "content": "Relax and rejuvenate along the stunning cliffs and azure waters of the Amalfi Coast.",
+      "user_id": 2
+    },
+    {
+      "journey_title": "Offbeat Exploration",
+      "vacation_type": "Other",
+      "location": "Machu Picchu, Peru",
+      "content": "Embark on an unforgettable journey to the ancient ruins of Machu Picchu and uncover its mysteries.",
+      "user_id": 3
+    }
+  ]
