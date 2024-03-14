@@ -1,6 +1,7 @@
 const User = require("./User.js");
 const Trip = require("./trip.js");
 const Comment = require("./comment.js");
+const Journey = require("./journey.js");
 
 // Association
 // user-Trip
@@ -36,4 +37,13 @@ Trip.hasMany(Comment, {
     hooks: true,
 });
 
-module.exports = { User, Trip, Comment };
+Journey.belongsTo(User, {
+    foreignKey: "user_id",
+});
+
+User.hasMany(Journey, {
+    foreignKey: "user_id",
+    onDelete: "CASCADE",
+});
+
+module.exports = { User, Trip, Comment, Journey };

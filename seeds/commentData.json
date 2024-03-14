@@ -1,0 +1,27 @@
+[
+    {
+      "comment_text": "Great post!",
+      "user_id": 2,
+      "post_id": 1
+    },
+    {
+      "comment_text": "Interesting perspective.",
+      "user_id": 3,
+      "post_id": 2
+    },
+    {
+      "comment_text": "I disagree with this.",
+      "user_id": 1,
+      "post_id": 3
+    },
+    {
+      "comment_text": "Thanks for sharing!",
+      "user_id": 3,
+      "post_id": 1
+    },
+    {
+      "comment_text": "Can you elaborate more on this point?",
+      "user_id": 2,
+      "post_id": 2
+    }
+  ]
