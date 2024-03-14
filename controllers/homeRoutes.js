@@ -62,4 +62,16 @@ router.get("/adventures", withAuth, async (req, res) => {
     }
 });
 
+/////////////CHATGPT TEST ROUTE///////////////
+router.get("/chat", (req, res) => {
+    try {
+        res.render("chattest", {
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+/////////////CHATGPT TEST ROUTE///////////////
+
 module.exports = router;
