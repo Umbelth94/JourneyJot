@@ -2,31 +2,35 @@
             <div id="footer-text" class="mx-20 flex flex-row justify-between">
                 <div class="left">
                     <div id="text-left" class="mr-10">
-                        <p>LOREM IPSUM DOLOR SIT  AMET, CONSECTETUR ADIPPSCING ELIT,</p>
-                        <p>SED DO EIUSMOD TEMPOR INCIDIDUNT</p>
+                        <p>"Navigate the world seamlessly with JourneyJot – your trusted companion for extraordinary  </p>
+                        <p>adventures and unforgettable experiences."</p>
                     </div>
                 </div>
                 <div class="right flex flex-row mb-10">
-                    <div id="quick-lines" class="mr-10">
-                        <h1>Quick Links</h1>
-                        <p><a href="/home">Home</a></p>
-                        <p><a href="/Signup">Sing up</a></p>
-                        <p><a href="/login">Log in</a></p>
+                    <div id="quick-lines" class="mr-32">
+                        <h1 class="text-lg">Quick Links</h1>
+                        <p class="text-sm link"><a href="/">Home</a></p>
+                        {{#if logged_in}}
+                        <p class="text-sm link"><a href="/">Logout</a></p>
+                        {{else}}
+                        <p class="text-sm link"><a href="/login">Sing up</a></p>
+                        <p class="text-sm link"><a href="/login">Log in</a></p>
+                        {{/if}}
                     </div>
-                    <div id="resources" class="mr-50">
-                        <h1>Resources</h1>
-                        <p><a href="/home">Support</a></p>
-                        <p><a href="/home">Contact</a></p>
-                        <p><a href="/home">Terms</a></p>
+                    <div id="resources" class="mr-80">
+                        <h1 class="text-lg">Resources</h1>
+                        <p class="text-sm link"><a href="/login">Support</a></p>
+                        <p class="text-sm link"><a href="/login">Contact</a></p>
+                        <p class="text-sm link"><a href="/login">Terms</a></p>
                     </div>
                 </div>
             </div>
             <hr class="mx-20">
             <div class="flex flex-row justify-center">
-                <p class="my-5 mx-10 text-4xl"><i class="fa-brands fa-facebook"></i></p>
-                <p class="my-5 mx-10 text-4xl"><i class="fa-brands fa-instagram"></i></p>
-                <p class="my-5 mx-10 text-4xl"><i class="fa-brands fa-x-twitter"></i></p>
-                <p class="my-5 mx-10 text-4xl"><i class="fa-brands fa-linkedin"></i></p>
+                <a class="link" href="https://github.com/Umbelth94/JourneyJot"><p class="my-5 mx-10 text-4xl icons"><i class="fa-brands fa-facebook"></i></p></a>
+                <a class="link" href="https://github.com/Umbelth94/JourneyJot"><p class="my-5 mx-10 text-4xl icons"><i class="fa-brands fa-instagram"></i></p></a>
+                <a class="link" href="https://github.com/Umbelth94/JourneyJot"><p class="my-5 mx-10 text-4xl icons"><i class="fa-brands fa-x-twitter"></i></p></a>
+                <a class="link" href="https://github.com/Umbelth94/JourneyJot"><p class="my-5 mx-10 text-4xl icons"><i class="fa-brands fa-linkedin"></i></p></a>
             </div>
 
 </footer>

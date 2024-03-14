@@ -1,0 +1,37 @@
+[
+    {
+      "activities": ["hiking", "camping", "birdwatching"],
+      "accessories": ["binoculars", "backpack", "tent"],
+      "funFact": "The area is home to over 200 species of birds.",
+      "location": "Yosemite National Park, California, USA",
+      "tripDate": "2024-07-15"
+    },
+    {
+      "activities": ["sightseeing", "shopping", "cuisine exploration"],
+      "accessories": ["camera", "comfortable shoes", "guidebook"],
+      "funFact": "The city has over 4000 temples.",
+      "location": "Kyoto, Japan",
+      "tripDate": "2024-09-10"
+    },
+    {
+      "activities": ["snorkeling", "sunbathing", "sailing"],
+      "accessories": ["snorkel mask", "sunscreen", "swimsuit"],
+      "funFact": "The coral reef is one of the largest in the world.",
+      "location": "Great Barrier Reef, Australia",
+      "tripDate": "2024-06-20"
+    },
+    {
+      "activities": ["skiing", "snowboarding", "apres-ski"],
+      "accessories": ["ski goggles", "thermal layers", "hot cocoa"],
+      "funFact": "The ski resort has over 100 trails.",
+      "location": "Whistler, British Columbia, Canada",
+      "tripDate": "2024-12-28"
+    },
+    {
+      "activities": ["photography", "stargazing", "hiking"],
+      "accessories": ["DSLR camera", "tripod", "star map"],
+      "funFact": "It's one of the darkest places on Earth.",
+      "location": "Mauna Kea, Hawaii, USA",
+      "tripDate": "2024-08-05"
+    }
+  ]

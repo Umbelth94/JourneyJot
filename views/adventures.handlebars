@@ -1,0 +1,53 @@
+{{!-- <div class="flex flex-row">
+    <div class="w-1/2">
+
+    </div>
+    <div class="w-1/2">
+
+    </div>
+</div> --}}
+<div class="flex flex-row justify-center text-shadow">
+  <div id="login-container" class="blog-container mr-32 px-16">
+        <h2 class="text-5xl font-bold mb-10 text-center text-shadow">chattest</h2>
+    
+        <form class="form signup-form gpt-form">
+        <div class="form-group">
+            <label class="text-2xl"  for="city">City</label>
+            <input class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="city" name="city" />
+        </div>
+        <div class="form-group">
+            <label class="text-2xl"  for="state">State</label>
+            <input class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="state" name="state" />
+        </div>
+        <div class="form-group mt-7">
+            <label class="text-2xl" for="activity">Activity</label>
+            <input class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="activity" />
+        </div>
+        <div class="form-group mt-7">
+            <label class="text-2xl" for="activity">Month</label>
+            <input class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="month" />
+        </div>
+        <div class="form-group my-20 text-center">
+            <button class="btn text-2xl text-black text-shadow" type="submit" style="background-color:#99F2CD">Submit</button>
+        </div>
+        </form>
+
+    </div>
+    <div class="flex flex-row justify-center text-shadow">
+  <div id="chatTest" class="blog-container mr-32 px-16">
+        <h2 class="text-5xl font-bold mb-10 text-center text-shadow">Chat Test</h2>
+    
+        <div id="responseCard" class="form-group">
+            <h3 class="text-2xl mb-3">Response:</h3>
+            <p id="activitiesResponse" class="text-sm"></p>
+            <p id="accessoriesResponse" class="text-sm"></p>
+            <p id="funFactResponse" class="text-sm"></p>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<script src="/utils/chatgpt.js"></script>
+<script src="/js/chatgptTest.js"></script>
