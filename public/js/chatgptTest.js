@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderActivities(responseData) {
     const activitiesResponse = document.getElementById("activitiesResponse");
 
+    //Parse the JSON data from response
     const activities = JSON.parse(responseData.activities);
     console.log(responseData);
     console.log(activities);
@@ -62,14 +63,19 @@ function renderActivities(responseData) {
 function renderAccessories(responseData) {
     const accessoriesResponse = document.getElementById("accessoriesResponse");
 
+    //Parse the JSON data from response
     const accessories = JSON.parse(responseData.accessories);
     console.log(accessories);
 
+    //Empty the accessories response container
     accessoriesResponse.innerHTML = "";
 
+    //Create a title and list element
     const title = document.createElement("h3");
     title.textContent = "Reccomended Items to Bring:";
     const list = document.createElement("ul");
+
+    //Loop through accessories array and append each item to the list
     accessories.items.forEach((item) => {
         console.log("looping through items");
         const listItem = document.createElement("li");
@@ -77,12 +83,38 @@ function renderAccessories(responseData) {
 
         list.appendChild(listItem);
     });
+
+    //Append title and list to accessories container
     accessoriesResponse.appendChild(title);
     accessoriesResponse.appendChild(list);
 }
+
+function renderFunFact(responseData) {
+    const funFactResponse = document.getElementById("funFactResponse");
+
+    //Parse the funfact response from responseData
+    const funFact = responseData.funFact;
+    console.log(funFact);
+
+    //Empty the funfact response container
+    funFactResponse.innerHTML = "";
+
+    //Create title and fact text elements
+    const title = document.createElement("h3");
+    title.textContent = "Fun Fact:";
+    const factText = document.createElement("p");
+    factText.textContent = funFact;
+
+    //Append title and fact to funFactResponse container
+    funFactResponse.appendChild(title);
+    funFactResponse.appendChild(factText);
+}
+
+//Render the response by running each of the render functions individually (Functions are seperated just to avoid having a giant render function);
 function renderResponse(responseData) {
     renderActivities(responseData);
     renderAccessories(responseData);
+    renderFunFact(responseData);
 }
 
 // function renderResponse(responseData) {
