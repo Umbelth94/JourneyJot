@@ -1,4 +1,4 @@
-const User = require("./User.js");
+const User = require("./user.js");
 const Trip = require("./trip.js");
 const Comment = require("./comment.js");
 const Journey = require("./journey.js");
@@ -19,7 +19,7 @@ Comment.belongsTo(User, {
     hooks: true,
 });
 // comment-trip
-Comment.belongsTo(Trip, {
+Comment.belongsTo(Journey, {
     foreignKey: "user_id",
     onDelete: "CASCADE",
     hooks: true,
@@ -31,7 +31,7 @@ User.hasMany(Comment, {
     hooks: true,
 });
 // trip-comment
-Trip.hasMany(Comment, {
+Journey.hasMany(Comment, {
     foreignKey: "post_id",
     onDelete: "CASCADE",
     hooks: true,
