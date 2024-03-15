@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".gpt-form");
+    console.log("Form loaded");
     if (form) {
         form.addEventListener("submit", async function (event) {
+            console.log("submit clicked");
             event.preventDefault();
 
             // Get the values from the form
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response.ok) {
                     throw new Error("Failed to get response");
                 }
-
+                console.log("Recieved ");
                 const responseData = await response.json();
                 renderResponse(responseData);
             } catch (error) {
@@ -36,15 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderActivities(responseData) {
     const activitiesResponse = document.getElementById("activitiesResponse");
 
-    const activities = JSON.parse(responseData.activities);
-    console.log(responseData);
-    console.log(activities);
-
-    activitiesResponse.innerHTML = "";
+    const activities = responseData.activities.thingsToDo;
+    activitiesResponse.innerHTML;
 
     //Loop through the activities array
-    activities.thingsToDo.forEach((activity) => {
-        console.log("looopiiiiiing");
+    activities.forEach((activity) => {
         //Create title element for the "thing"
         const title = document.createElement("h3");
         title.textContent = activity.activity;
@@ -60,36 +58,18 @@ function renderActivities(responseData) {
 }
 
 function renderResponse(responseData) {
-    // const activitiesResponse = document.getElementById("activitiesResponse");
-    // const accessoriesResponse = document.getElementById("accessoriesResponse");
-    // const funFactResponse = document.getElementById("funFactResponse");
+    const accessoriesResponse = document.getElementById("accessoriesResponse");
+    const funFactResponse = document.getElementById("funFactResponse");
+
+    //Parse the activities JSON string into a Javascript object
+    console.log(responseData);
     renderActivities(responseData);
-    // const activities = JSON.parse(responseData.activities);
-    // console.log(responseData);
-    // console.log(activities);
 
-    // activitiesResponse.innerHTML = "";
+    console.log(`Activities: ${responseData.activities}`);
+    console.log(`Accessories: ${responseData.accessories}`);
+    console.log(`Fun Fact: ${responseData.funFact}`);
 
-    // //Loop through the activities array
-    // activities.thingsToDo.forEach((activity) => {
-    //     console.log('looopiiiiiing');
-    //     //Create title element for the "thing"
-    //     const title = document.createElement("h3");
-    //     title.textContent = activity.activity;
-
-    //     //Create paragraph element for the "description"
-    //     const description = document.createElement("p");
-    //     description.textContent = activity.description;
-
-    //     //Append title and description elements to activitiesResponse container
-    //     activitiesResponse.appendChild(title);
-    //     activitiesResponse.appendChild(description);
+    // activitiesResponse.textContent = `Activities: ${responseData.activities}`;
+    accessoriesResponse.textContent = `Accessories: ${responseData.accessories}`;
+    funFactResponse.textContent = `Fun Fact: ${responseData.funFact}`;
 }
-
-// console.log(`Activities: ${responseData.activities}`);
-// console.log(`Accessories: ${responseData.accessories}`);
-// console.log(`Fun Fact: ${responseData.funFact}`);
-
-// activitiesResponse.textContent = `Activities: ${responseData.activities}`;
-// accessoriesResponse.textContent = `Accessories: ${responseData.accessories}`;
-// funFactResponse.textContent = `Fun Fact: ${responseData.funFact}`;
