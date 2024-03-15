@@ -241,7 +241,8 @@ input[name="slide"]:checked + label .description {
 #logout:hover,
 #showing:hover,
 #startButton:hover,
-#submit:hover {
+#submit:hover,
+#titles:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
 }
@@ -275,4 +276,14 @@ input[name="option"]:checked + img {
 .image-input:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
+}
+
+.border-up {
+    border-top: solid 2px white;
+    padding: 15px 20px;
+}
+
+.first-signup {
+    border-top: dotted 2px rgb(255, 255, 255);
+    border-bottom: dotted 2px rgb(255, 255, 255);
 }

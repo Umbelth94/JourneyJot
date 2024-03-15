@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { User, Journey } = require("../models/");
+const { User, Journey, Comment } = require("../models/");
 
 //Renders the homepage
 router.get("/", (req, res) => {
@@ -29,6 +29,10 @@ router.get("/journeys", async (req, res) => {
         const journeyData = await Journey.findAll({
             include: [
                 {
+                    model: Comment,
+                    attributes: ["comment_text"],
+                },
+                {
                     model: User,
                     attributes: ["username"],
                 },
@@ -43,6 +47,32 @@ router.get("/journeys", async (req, res) => {
         // Pass serialized data and session flag into template
         res.render("journeys", {
             journeys,
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get("/journeys/:id", async (req, res) => {
+    try {
+        const journeyData = await Journey.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ["username"],
+                },
+                {
+                    model: Comment,
+                    include: [User],
+                },
+            ],
+        });
+
+        const journey = journeyData.get({ plain: true });
+
+        res.render("journey", {
+            ...journey,
             logged_in: req.session.logged_in,
         });
     } catch (err) {

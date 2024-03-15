@@ -1,51 +1,49 @@
+ {{#if logged_in}}
 <div class="journey text-shadow flex flex-row">
-    {{!-- {{#if logged_in}} --}}
     <div class="w-3/12 ml-20 add-journey"> 
         <h1 class="text-3xl">Share your journey:</h1>
-        <form>
+        <form class="new-journey-form">
             <div class="mt-4 form1">
                 <label class="text-xl"for="title">Journey's title</label>
-                <input placeholder="Italy's Journey" class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="title">
+                <input placeholder="Italy's Journey" class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="journey-title">
             </div>
             <div class="form2">
                 <div class="mt-4 text-xl"><label>Type of Journey:</label></div>
                 <div class="trip-types flex flex-wrap mt-2">
                     <div class="text-center selected">
                         <label for="beach" > 
-                        <input type="radio" id="beach" name="option" checked>Beach 
+                        <input type="radio" value="Beach" id="beach" name="option" checked>Beach 
                         <img class="mr-4 image-input mt-2"src="/images/beach.avif" style="width:208px">
                         </label>
                     </div>
                     <div class="text-center">
                         <label  for="camping">
-                        <input type="radio" id="camping" name="option">Camping 
+                        <input type="radio" value="Camping" id="camping" name="option">Camping 
                         <img class="image-input mt-2"src="/images/camping.avif" style="width:208px">
                         </label>
                     </div>
                     <div class="mt-5 text-center">
                         <label for="skiing">
-                        <input type="radio" id="skiing" name="option">Skiing 
+                        <input type="radio" value="Skiing" id="skiing" name="option">Skiing 
                         <img class="mr-4 image-input mt-2" src="/images/skiing.avif" style="width:208px">
                         </label>
                     </div>
                     <div class="mt-5 text-center">
                         <label for="other">
-                        <input type="radio" id="other" name="option">Other 
+                        <input type="radio" value="Other" id="other" name="option">Other 
                         <img class="image-input mt-2" src="/images/other.avif" style="width:208px">
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="mt-4 form3">
+            <div class="mt-6 form3">
                 <label class="text-xl" for="where">Where did you go?</label>
+                <p class="mb-2">~ City, Country</p>
                 <input placeholder="E.g. Rome, Italy..." class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="where">
             </div>
-            <div class="mt-4 form4">
-                <label class="text-xl" for="items">What did you bring?</label>
-                <input placeholder="I brought my backpack with..." class="form-input w-full mt-1 pl-2 h-8 text-black rounded-lg" type="text" id="where">
-            </div>
-            <div class="mt-4 form5">
-                <label class="text-xl" for="experience">Tell us how it went:</label>
+            <div class="mt-6 form5">
+                <label class="text-xl" for="experience">Share your experience:</label>
+                <p class="mb-2">~Try to write about what you packed, visited, saw, everything! </p>
                 <textarea placeholder="I really enjoyed my trip to..." class="mt-1 pl-2 text-black rounded-lg pt-2" name="experience" id="experience" cols="40" rows="7" style="width:100%"></textarea>
             </div>
             <div class="mt-4 text-center">
@@ -59,7 +57,7 @@
             <div class="flex flex-col journey mx-10 blog-container my-5">
             <div class="flex flex-row justify-between">
                 <h2>
-                <a href="/journeys" class="color-mine text-2xl" id="titles">{{journey.journey_title}}</a>
+                <a href="/journeys/{{journey.id}}" class="color-mine text-2xl" id="titles">{{journey.journey_title}}</a>
                 <p>Type of Journey: {{journey.vacation_type}} </p>
                 <p>Location: {{journey.location}}</p> 
                 </h2>
@@ -73,5 +71,36 @@
             </div>
             {{/each}}
     </div>
-    {{!-- {{/if}} --}}
+    
+    
 </div>
+{{else}}
+    <div class="flex flex-col">
+     
+        <div class="first-signup mx-64 py-5 mb-10">
+            <h1 class="text-center text-5xl font-extrabold">Would you like to jot your journey?</h1>
+            <p class="text-center my-10"><a href="/login" class="color-mine text-3xl w-auto" id="showing" style="border:solid 4px #99f2cd; border-radius: 20px; padding: 6px 20px;">SIGN-UP FOR FREE</a></p>
+        </div> 
+        <div class="mx-64">
+            <h1 id="blogTitle"class="text-5xl ml-10 text-center">Journeys</h1>
+            {{#each journeys as |journey| }}
+            <div class="flex flex-col journey mx-10 blog-container my-5">
+            <div class="flex flex-row justify-between">
+                <h2>
+                <a href="/journeys/{{journey.id}}" class="color-mine text-2xl" id="titles">{{journey.journey_title}}</a>
+                <p>Type of Journey: {{journey.vacation_type}} </p>
+                <p>Location: {{journey.location}}</p> 
+                </h2>
+                <p>~ Created by {{journey.user.username}} ~</p>
+            </div>
+            <div class="">
+                <p>
+                {{journey.content}}
+                </p>
+            </div>
+            </div>
+            {{/each}}
+    </div>
+    </div>
+{{/if}}
+<script src="/js/createJourney.js"></script>
