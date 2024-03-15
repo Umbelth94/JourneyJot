@@ -1,4 +1,4 @@
-const User = require("./User.js");
+const User = require("./user.js");
 const Trip = require("./trip.js");
 const Comment = require("./comment.js");
 const Journey = require("./journey.js");
