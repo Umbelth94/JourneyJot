@@ -3,13 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (form) {
         form.addEventListener("submit", async function (event) {
             event.preventDefault();
-
+            const responseCardTitle =
+                document.getElementById("responseCardHeader");
+            responseCardTitle.textContent = "";
             // Get the values from the form
             const city = document.getElementById("city").value;
             const state = document.getElementById("state").value;
             const activity = document.getElementById("activity").value;
             const month = document.getElementById("month").value;
             console.log(city, state, activity, month);
+
+            //Change the title to reflect the city that the user inputs
+            responseCardTitle.textContent = "Adventure to " + city;
+
             // Call the response function with the form values
 
             try {
