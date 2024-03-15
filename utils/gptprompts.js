@@ -5,7 +5,7 @@ const openai = new chatGpt({
 });
 
 async function response(city, state, activity, month) {
-    const activities = await openai.chat.completions.create({
+    const activitiesResponse = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         max_tokens: 200,
         messages: [
@@ -20,7 +20,9 @@ async function response(city, state, activity, month) {
             },
         ],
     });
-    const accessories = await openai.chat.completions.create({
+
+    console.log("Response from chatGpt:", activitiesResponse);
+    const accessoriesResponse = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         max_tokens: 200,
         messages: [
@@ -35,7 +37,7 @@ async function response(city, state, activity, month) {
             },
         ],
     });
-    const funFact = await openai.chat.completions.create({
+    const funFactResponse = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         max_tokens: 100,
         messages: [
@@ -51,21 +53,20 @@ async function response(city, state, activity, month) {
         ],
     });
 
-    const activitiesJSON = JSON.stringify(activities.choices[0]);
-    const accessoriesJSON = JSON.stringify(accessories.choices[0]);
-    const funFactJSON = JSON.stringify(funFact.choices[0]);
+    const activitiesContent = activitiesResponse.choices[0].message.content;
+    const accessoriesContent = accessoriesResponse.choices[0].message.content;
+    const funFactContent = funFactResponse.choices[0].message.content;
 
-    const activitiesJSONO = JSON.parse(activitiesJSON);
-    const accessoriesJSONO = JSON.parse(accessoriesJSON);
-    const funFactJSONO = JSON.parse(funFactJSON);
-
-    const response = {
-        activites: activitiesJSONO.message.content,
-        accessories: accessoriesJSONO.message.content,
-        funFact: funFactJSONO.message.content,
+    const responseData = {
+        activities: activitiesContent,
+        accessories: accessoriesContent,
+        funFact: funFactContent,
     };
 
-    console.log(response);
+    console.log("response data: " + responseData);
+    return responseData;
 }
+
+response();
 
 module.exports = { response };
