@@ -60,36 +60,5 @@ function renderActivities(responseData) {
 }
 
 function renderResponse(responseData) {
-    // const activitiesResponse = document.getElementById("activitiesResponse");
-    // const accessoriesResponse = document.getElementById("accessoriesResponse");
-    // const funFactResponse = document.getElementById("funFactResponse");
     renderActivities(responseData);
-    // const activities = JSON.parse(responseData.activities);
-    // console.log(responseData);
-    // console.log(activities);
-
-    // activitiesResponse.innerHTML = "";
-
-    // //Loop through the activities array
-    // activities.thingsToDo.forEach((activity) => {
-    //     console.log('looopiiiiiing');
-    //     //Create title element for the "thing"
-    //     const title = document.createElement("h3");
-    //     title.textContent = activity.activity;
-
-    //     //Create paragraph element for the "description"
-    //     const description = document.createElement("p");
-    //     description.textContent = activity.description;
-
-    //     //Append title and description elements to activitiesResponse container
-    //     activitiesResponse.appendChild(title);
-    //     activitiesResponse.appendChild(description);
 }
-
-// console.log(`Activities: ${responseData.activities}`);
-// console.log(`Accessories: ${responseData.accessories}`);
-// console.log(`Fun Fact: ${responseData.funFact}`);
-
-// activitiesResponse.textContent = `Activities: ${responseData.activities}`;
-// accessoriesResponse.textContent = `Accessories: ${responseData.accessories}`;
-// funFactResponse.textContent = `Fun Fact: ${responseData.funFact}`;
