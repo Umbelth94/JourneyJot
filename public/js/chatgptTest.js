@@ -44,7 +44,7 @@ function renderActivities(responseData) {
 
     //Loop through the activities array
     activities.thingsToDo.forEach((activity) => {
-        console.log("looopiiiiiing");
+        console.log("looping through thingsToDo");
         //Create title element for the "thing"
         const title = document.createElement("h3");
         title.textContent = activity.activity;
@@ -59,6 +59,42 @@ function renderActivities(responseData) {
     });
 }
 
+function renderAccessories(responseData) {
+    const accessoriesResponse = document.getElementById("accessoriesResponse");
+
+    const accessories = JSON.parse(responseData.accessories);
+    console.log(accessories);
+
+    accessoriesResponse.innerHTML = "";
+
+    const title = document.createElement("h3");
+    title.textContent = "Reccomended Items to Bring:";
+    const list = document.createElement("ul");
+    accessories.items.forEach((item) => {
+        console.log("looping through items");
+        const listItem = document.createElement("li");
+        listItem.textContent = item;
+
+        list.appendChild(listItem);
+    });
+    accessoriesResponse.appendChild(title);
+    accessoriesResponse.appendChild(list);
+}
 function renderResponse(responseData) {
     renderActivities(responseData);
+    renderAccessories(responseData);
 }
+
+// function renderResponse(responseData) {
+//     const activitiesResponse = document.getElementById("activitiesResponse");
+//     const accessoriesResponse = document.getElementById("accessoriesResponse");
+//     const funFactResponse = document.getElementById("funFactResponse");
+
+//     console.log(`Activities: ${responseData.activities}`);
+//     console.log(`Accessories: ${responseData.accessories}`);
+//     console.log(`Fun Fact: ${responseData.funFact}`);
+
+//     activitiesResponse.textContent = `Activities: ${responseData.activities}`;
+//     accessoriesResponse.textContent = `Accessories: ${responseData.accessories}`;
+//     funFactResponse.textContent = `Fun Fact: ${responseData.funFact}`;
+// }
