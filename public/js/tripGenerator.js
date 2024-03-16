@@ -11,19 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Get the values from the form
             const city = document.getElementById("city").value;
+            const upperCaseCity = city[0].toUpperCase() + city.slice(1);
             const state = document.getElementById("state").value;
             const activity = document.getElementById("activity").value;
             const month = document.getElementById("month").value;
             console.log(city, state, activity, month);
 
             //Change the title to reflect the city that the user inputs
-            responseCardTitle.textContent = "Adventure to " + city;
+            responseCardTitle.textContent = "Adventure to " + upperCaseCity;
             responseCardTitle.classList.add(
                 "font-bold",
                 "mb-10",
                 "text-center",
                 "text-shadow",
                 "text-5xl",
+                "mt-5",
             );
 
             // Call the response function with the form values
@@ -59,20 +61,26 @@ function renderActivities(responseData) {
 
     activitiesResponse.innerHTML = "";
 
+    //Create the general title
+    const title = document.createElement("h3");
+    title.textContent = "Activities:";
+    title.classList.add("color-mine", "text-3xl");
+    activitiesResponse.appendChild(title);
     //Loop through the activities array
     activities.thingsToDo.forEach((activity) => {
         console.log("looping through thingsToDo");
-        //Create title element for the "thing"
-        const title = document.createElement("h3");
-        title.textContent = activity.activity;
-        title.classList.add("color-mine", "text-xl");
+
+        //Create title for each element
+        const titleActivity = document.createElement("h3");
+        titleActivity.textContent = activity.activity;
+        titleActivity.classList.add("color-mine", "text-xl", "ml-5");
         //Create paragraph element for the "description"
         const description = document.createElement("p");
+        description.classList.add("text-lg", "ml-7");
         description.textContent = activity.description;
 
-        //Append title and description elements to activitiesResponse container
-
-        activitiesResponse.appendChild(title);
+        //Append titleActivity and description elements to activitiesResponse container
+        activitiesResponse.appendChild(titleActivity);
         activitiesResponse.appendChild(description);
     });
 }
@@ -89,14 +97,15 @@ function renderAccessories(responseData) {
 
     //Create a title and list element
     const title = document.createElement("h3");
-    title.textContent = "Reccomended Items to Bring:";
-    title.classList.add("color-mine", "text-2xl");
+    title.textContent = "Recommended Items to Bring:";
+    title.classList.add("color-mine", "text-3xl", "mt-7", "mb-2");
     const list = document.createElement("ul");
 
     //Loop through accessories array and append each item to the list
     accessories.items.forEach((item) => {
         console.log("looping through items");
         const listItem = document.createElement("li");
+        listItem.classList.add("text-lg", "ml-8", "lists");
         listItem.textContent = item;
 
         list.appendChild(listItem);
@@ -121,8 +130,9 @@ function renderFunFact(responseData) {
     //Create title and fact text elements
     const title = document.createElement("h3");
     title.textContent = "Fun Fact:";
-    title.classList.add("color-mine", "text-2xl");
+    title.classList.add("color-mine", "text-3xl", "mt-7");
     const factText = document.createElement("p");
+    factText.classList.add("text-lg");
     factText.textContent = funFact;
 
     //Append title and fact to funFactResponse container
@@ -147,6 +157,7 @@ function renderSubmitBtn(responseData) {
             "text-2xl",
             "text-black",
             "text-shadow",
+            "save-trip",
         );
         saveTripBtn.style.backgroundColor = "#99F2CD";
         saveTripBtn.addEventListener("click", async () => {
@@ -174,6 +185,9 @@ function renderSubmitBtn(responseData) {
             "text-2xl",
             "text-black",
             "text-shadow",
+            "text-center",
+            "m-5",
+            "new-trip",
         );
         reloadBtn.style.backgroundColor = "#99F2CD";
         reloadBtn.addEventListener("click", async () => {
