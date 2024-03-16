@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { User, Journey, Comment } = require("../models/");
+const { User, Journey, Comment, Trip } = require("../models/");
 
 //Renders the homepage
 router.get("/", (req, res) => {
@@ -85,7 +85,25 @@ router.get("/trips", withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exlude: ["password"] },
-            // include: [{ model: Trip }],
+            include: [
+                {
+                    model: User,
+                    attributes: ["username", "id"],
+                },
+                {
+                    model: Trip,
+                    attributes: [
+                        "id",
+                        "activities",
+                        "accesories",
+                        "funFact",
+                        "city",
+                        "state",
+                        "month",
+                        "userId",
+                    ],
+                },
+            ],
         });
 
         const user = userData.get({ plain: true });
@@ -99,17 +117,6 @@ router.get("/trips", withAuth, async (req, res) => {
     }
 });
 
-// router.get("/adventures", withAuth, async (req, res) => {
-//     try {
-//         res.render("adventures", {
-//             logged_in: req.session.logged_in,
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-/////////////CHATGPT TEST ROUTE///////////////
 router.get("/adventures", (req, res) => {
     try {
         res.render("adventures", {
@@ -119,6 +126,5 @@ router.get("/adventures", (req, res) => {
         res.status(500).json(err);
     }
 });
-/////////////CHATGPT TEST ROUTE///////////////
 
 module.exports = router;

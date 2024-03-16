@@ -30,7 +30,7 @@ async function response(city, state, activity, month) {
 
     const accessoriesPrompt = {
         prompt: "Respond only using this JSON object with the properties included in this JSON object.  Respond with only valid JSON",
-        question: `List 5 items without a description for things to bring to ${city} ${state} if the focus of the trip is ${activity} in ${month}. The array of items should be called items.  Always respond with at least one item`,
+        question: `List 5 items without a description for things to bring to ${city} ${state} relating to the season and weather that correlates with the month of ${month} if the focus of the trip is ${activity}. The array of items should be called items.  Always respond with at least one item`,
         thingsToDo: [],
     };
     const accessoriesResponse = await openai.chat.completions.create({
