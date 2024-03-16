@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Change the title to reflect the city that the user inputs
             responseCardTitle.textContent = "Adventure to " + city;
+            responseCardTitle.classList.add(
+                "font-bold",
+                "mb-10",
+                "text-center",
+                "text-shadow",
+                "text-5xl",
+            );
 
             // Call the response function with the form values
 
@@ -58,12 +65,13 @@ function renderActivities(responseData) {
         //Create title element for the "thing"
         const title = document.createElement("h3");
         title.textContent = activity.activity;
-
+        title.classList.add("color-mine", "text-xl");
         //Create paragraph element for the "description"
         const description = document.createElement("p");
         description.textContent = activity.description;
 
         //Append title and description elements to activitiesResponse container
+
         activitiesResponse.appendChild(title);
         activitiesResponse.appendChild(description);
     });
@@ -82,6 +90,7 @@ function renderAccessories(responseData) {
     //Create a title and list element
     const title = document.createElement("h3");
     title.textContent = "Reccomended Items to Bring:";
+    title.classList.add("color-mine", "text-2xl");
     const list = document.createElement("ul");
 
     //Loop through accessories array and append each item to the list
@@ -94,6 +103,7 @@ function renderAccessories(responseData) {
     });
 
     //Append title and list to accessories container
+
     accessoriesResponse.appendChild(title);
     accessoriesResponse.appendChild(list);
 }
@@ -111,6 +121,7 @@ function renderFunFact(responseData) {
     //Create title and fact text elements
     const title = document.createElement("h3");
     title.textContent = "Fun Fact:";
+    title.classList.add("color-mine", "text-2xl");
     const factText = document.createElement("p");
     factText.textContent = funFact;
 
@@ -129,11 +140,53 @@ function renderSubmitBtn(responseData) {
         responseData.accessories &&
         responseData.funFact
     ) {
-        // Create the submit button
-        const submitBtn = document.createElement("button");
+        const saveTripBtn = document.createElement("button");
+        saveTripBtn.textContent = "Save This Trip";
+        saveTripBtn.classList.add(
+            "btn-signup",
+            "text-2xl",
+            "text-black",
+            "text-shadow",
+        );
+        saveTripBtn.style.backgroundColor = "#99F2CD";
+        saveTripBtn.addEventListener("click", async () => {
+            try {
+                const saveResponse = await fetch("/api/trips/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(responseData),
+                });
+                if (!saveResponse.ok) {
+                    throw new Error("Failed to save trip");
+                }
+                console.log("Trip saved successfully!");
+            } catch (error) {
+                console.error(error);
+            }
+        });
 
-        submitBtn.textContent = "Save Trip";
-        submitBtnContainer.appendChild(submitBtn);
+        const reloadBtn = document.createElement("button");
+        reloadBtn.textContent = "Start New Trip";
+        reloadBtn.classList.add(
+            "btn-signup",
+            "text-2xl",
+            "text-black",
+            "text-shadow",
+        );
+        reloadBtn.style.backgroundColor = "#99F2CD";
+        reloadBtn.addEventListener("click", async () => {
+            window.location.reload();
+        });
+        submitBtnContainer.appendChild(saveTripBtn);
+        submitBtnContainer.appendChild(reloadBtn);
+
+        // // Create the submit button
+        // const submitBtn = document.createElement("button");
+
+        // submitBtn.textContent = "Save Trip";
+        // submitBtnContainer.appendChild(submitBtn);
     } else {
         console.log("Button no render :(");
     }

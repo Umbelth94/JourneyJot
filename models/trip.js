@@ -24,13 +24,25 @@ Trip.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        location: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        tripDate: {
-            type: DataTypes.DATE,
+        state: {
+            type: DataTypes.STRING,
             allowNull: false,
+        },
+        month: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "user",
+                key: "id",
+            },
         },
     },
     {
