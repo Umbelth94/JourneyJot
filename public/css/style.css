@@ -242,7 +242,9 @@ input[name="slide"]:checked + label .description {
 #showing:hover,
 #startButton:hover,
 #submit:hover,
-#titles:hover {
+#titles:hover,
+.save-trip:hover,
+.new-trip:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
 }
@@ -286,4 +288,8 @@ input[name="option"]:checked + img {
 .first-signup {
     border-top: dotted 2px rgb(255, 255, 255);
     border-bottom: dotted 2px rgb(255, 255, 255);
+}
+
+.lists {
+    list-style-type: square;
 }
