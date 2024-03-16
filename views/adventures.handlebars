@@ -6,8 +6,9 @@
 
     </div>
 </div> --}}
+{{#if logged_in}}
 <div class="flex flex-row justify-center text-shadow">
-  <div id="login-container" class="blog-container mr-32 px-16">
+  <div id="login-container" class="blog-container mr-32 px-16 w-4/12">
         <h2 class="text-5xl font-bold mb-10 text-center text-shadow">Where Would You Like To Go? </h2>
     
         <form class="form signup-form gpt-form">
@@ -101,20 +102,27 @@
         </form>
 
     </div>
-    <div class="flex flex-row justify-center text-shadow">
-  <div id="chatTest" class="blog-container mr-32 px-16">
-    <h2 id="responseCardHeader"></h2>
-        <div id="responseCard" class="form-group">
-            {{!-- <h3 class="text-5xl font-bold mb-10 text-center text-shadow">Response:</h3> --}}
-            <p id="activitiesResponse" class="text-sm"></p>
-            <p id="accessoriesResponse" class="text-sm"></p>
-            <p id="funFactResponse" class="text-sm"></p>
-            <div id="submitBtnContainer" class="text-center my-5"></div>
-        </div>
+    <div class="flex flex-row justify-center text-shadow w-6/12">
+        <div id="chatTest" class="blog-container mr-32 px-16">
+            <h1 id="loading"class="text-6xl color-mine font-extrabold mt-48 text-center">Results are finding their route...</h1>
+                <h2 id="responseCardHeader"></h2>
+                <div id="responseCard" class="form-group">
+                    {{!-- <h3 class="text-5xl font-bold mb-10 text-center text-shadow">Response:</h3> --}}
+                    <p id="activitiesResponse" class="text-sm"></p>
+                    <p id="accessoriesResponse" class="text-sm"></p>
+                    <p id="funFactResponse" class="text-sm"></p>
+                    <div id="submitBtnContainer" class="text-center my-5"></div>
+                </div>
 
+            </div>
     </div>
-</div>
 
 </div>
 
 <script src="/js/tripGenerator.js" type="module"></script>
+{{else}}
+<div class="first-signup mx-64 py-40">
+            <h1 class="text-center text-5xl font-extrabold">Would you like to plan an adventure?</h1>
+            <p class="text-center my-10"><a href="/login" class="color-mine text-3xl w-auto" id="showing" style="border:solid 4px #99f2cd; border-radius: 20px; padding: 6px 20px;">SIGN-UP FOR FREE</a></p>
+        </div> 
+{{/if}}
