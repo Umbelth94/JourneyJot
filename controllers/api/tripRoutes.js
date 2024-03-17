@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { Trip } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // Route to save trip data to the database
-router.post("/trips/save", async (req, res) => {
+router.post("/save", withAuth, async (req, res) => {
     try {
         const { activities, accessories, funFact, city, state, month } =
             req.body;
-        const userId = req.user.id;
+        const userId = req.session.user_id;
 
         // Save the trip data to the database
         const trip = await Trip.create({

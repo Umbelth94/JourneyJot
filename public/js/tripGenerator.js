@@ -223,12 +223,6 @@ function renderSubmitBtn(responseData) {
         });
         submitBtnContainer.appendChild(saveTripBtn);
         submitBtnContainer.appendChild(reloadBtn);
-
-        // // Create the submit button
-        // const submitBtn = document.createElement("button");
-
-        // submitBtn.textContent = "Save Trip";
-        // submitBtnContainer.appendChild(submitBtn);
     } else {
         console.log("Button no render :(");
     }

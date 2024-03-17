@@ -15,10 +15,28 @@ Trip.init(
         activities: {
             type: DataTypes.STRING,
             allowNull: false,
+            get() {
+                // Convert JSON string to an array when retrieving the data from the database
+                const activitiesString = this.getDataValue("activities");
+                return activitiesString ? JSON.parse(activitiesString) : [];
+            },
+            set(activities) {
+                // Convert array to JSON string when setting data in the database
+                this.setDataValue("activities", JSON.stringify(activities));
+            },
         },
-        accesories: {
+        accessories: {
             type: DataTypes.STRING,
             allowNull: false,
+            get() {
+                // Convert JSON string to an array when retrieving the data from the database
+                const accessoriesString = this.getDataValue("accessories");
+                return accessoriesString ? JSON.parse(accessoriesString) : [];
+            },
+            set(accessories) {
+                // Convert array to JSON string when setting data in the database
+                this.setDataValue("accessories", JSON.stringify(accessories));
+            },
         },
         funFact: {
             type: DataTypes.STRING,
