@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Trips</title>
+</head>
+<body>
+    <h1>Welcome, {{user.username}}!</h1>
+    <h2>Your Trips:</h2>
+        {{#each user.trips}}
+        <section class="blog-container">
+        <a href="trip/{{this.id}}">
+            <ul>
+                    <li>
+                        <strong><h3>Trip To {{this.city}}, {{this.state}}</h3></strong><br>
+                        <strong>Activities:</strong>
+                        <ul>
+                            {{#each this.activities}}
+                                <strong><li>{{this.activity}}</li></strong>
+                                <li>{{this.description}}</li>
+                            {{/each}}
+                        </ul>
+                        <strong>Accessories:</strong> 
+                        <ul>
+                            {{#each this.accessories.items}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        <strong>Fun Fact:</strong> {{this.funFact}}<br>
+                        <strong>City:</strong> {{this.city}}<br>
+                        <strong>State:</strong> {{this.state}}<br>
+                        <strong>Month:</strong> {{this.month}}<br>
+                    </li>
+            </ul>
+        </a>   
+    </section>
+        {{/each}}
+</body>
+</html>
