@@ -105,7 +105,7 @@ router.get("/trips", withAuth, async (req, res) => {
         const user = userData.get({ plain: true });
         console.log(user);
 
-        res.render("trips", {
+        res.render("my-trips", {
             user,
             logged_in: true,
         });
