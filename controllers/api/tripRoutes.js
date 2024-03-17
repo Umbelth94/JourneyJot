@@ -28,21 +28,24 @@ router.post("/save", withAuth, async (req, res) => {
     }
 });
 
-// Route to fetch user's trips
-// router.get("/", async (req, res) => {
-//     try {
-//         const userId = req.user.id;
+//Route to fetch a specific trip
+router.get("/:id", withAuth, async (req, res) => {
+    try {
+        const tripData = await Trip.findByPk(req.params.id);
 
-//         // Fetch trips data for the logged-in user
-//         const trip = await Trip.findAll({
-//             where: { userId: userId },
-//         });
+        const trip = tripData.get({ plain: true });
 
-//         res.render("trips", { trip });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: "Internal Server Error" });
-//     }
-// });
+        if (!tripData) {
+            return res.status(404).json({ error: "Trip not found" });
+        }
 
+        res.render("specific-trip", {
+            trip,
+            logged_in: true,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 module.exports = router;

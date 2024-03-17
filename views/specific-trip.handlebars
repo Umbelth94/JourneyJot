@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specific Trip Details</title>
+</head>
+<body>
+    <h1>Trip Details</h1>
+    <div>
+        <strong><h3>Trip To {{trip.city}}, {{trip.state}}</h3></strong><br>
+        <p><strong>Activities:</strong></p>
+        <ul>
+            {{#each trip.activities}}
+                <li>{{this.activity}}</li>
+                <li>{{this.description}}</li>
+            {{/each}}
+        </ul>
+        <p><strong>Accessories:</strong></p>
+        <ul>
+            {{#each trip.accessories.items}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <p><strong>Fun Fact:</strong> {{trip.funFact}}</p>
+        <p><strong>City:</strong> {{trip.city}}</p>
+        <p><strong>State:</strong> {{trip.state}}</p>
+        <p><strong>Month:</strong> {{trip.month}}</p>
+    </div>
+
+    {{!-- Perhaps run the weather.js script/util here and display the weather as cards??   --}}
+</body>
+</html>
