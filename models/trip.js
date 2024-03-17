@@ -13,12 +13,13 @@ Trip.init(
             autoIncrement: true,
         },
         activities: {
-            type: DataTypes.STRING,
+            type: DataTypes.JSON,
             allowNull: false,
+            defaultValue: [],
             get() {
                 // Convert JSON string to an array when retrieving the data from the database
-                const activitiesString = this.getDataValue("activities");
-                return activitiesString ? JSON.parse(activitiesString) : [];
+                const activitiesArray = this.getDataValue("activities");
+                return activitiesArray ? JSON.parse(activitiesArray) : [];
             },
             set(activities) {
                 // Convert array to JSON string when setting data in the database
