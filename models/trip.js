@@ -13,15 +13,34 @@ Trip.init(
             autoIncrement: true,
         },
         activities: {
-            type: DataTypes.STRING,
+            type: DataTypes.JSON,
             allowNull: false,
+            defaultValue: [],
+            get() {
+                // Convert JSON string to an array when retrieving the data from the database
+                const activitiesArray = this.getDataValue("activities");
+                return activitiesArray ? JSON.parse(activitiesArray) : [];
+            },
+            set(activities) {
+                // Convert array to JSON string when setting data in the database
+                this.setDataValue("activities", JSON.stringify(activities));
+            },
         },
-        accesories: {
+        accessories: {
             type: DataTypes.STRING,
             allowNull: false,
+            get() {
+                // Convert JSON string to an array when retrieving the data from the database
+                const accessoriesString = this.getDataValue("accessories");
+                return accessoriesString ? JSON.parse(accessoriesString) : [];
+            },
+            set(accessories) {
+                // Convert array to JSON string when setting data in the database
+                this.setDataValue("accessories", JSON.stringify(accessories));
+            },
         },
         funFact: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
         city: {

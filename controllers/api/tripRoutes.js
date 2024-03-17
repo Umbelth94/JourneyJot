@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { Trip } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // Route to save trip data to the database
-router.post("/trips/save", async (req, res) => {
+router.post("/save", withAuth, async (req, res) => {
     try {
         const { activities, accessories, funFact, city, state, month } =
             req.body;
-        const userId = req.user.id;
+        const userId = req.session.user_id;
 
         // Save the trip data to the database
         const trip = await Trip.create({
@@ -27,21 +28,24 @@ router.post("/trips/save", async (req, res) => {
     }
 });
 
-// Route to fetch user's trips
-router.get("/trips", async (req, res) => {
+//Route to fetch a specific trip
+router.get("/:id", withAuth, async (req, res) => {
     try {
-        const userId = req.user.id;
+        const tripData = await Trip.findByPk(req.params.id);
 
-        // Fetch trips data for the logged-in user
-        const trip = await Trip.findAll({
-            where: { userId: userId },
+        const trip = tripData.get({ plain: true });
+
+        if (!tripData) {
+            return res.status(404).json({ error: "Trip not found" });
+        }
+
+        res.render("specific-trip", {
+            trip,
+            logged_in: true,
         });
-
-        res.render("trips", { trip });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
 module.exports = router;

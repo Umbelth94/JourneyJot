@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 const responseData = await response.json();
+                console.log(responseData);
                 image.remove();
                 renderResponse(responseData);
             } catch (error) {
@@ -71,8 +72,7 @@ function renderActivities(responseData) {
     const activitiesResponse = document.getElementById("activitiesResponse");
 
     //Parse the JSON data from response
-    const activities = JSON.parse(responseData.activities);
-    console.log(responseData);
+    const activities = responseData.activities;
     console.log(activities);
 
     activitiesResponse.innerHTML = "";
@@ -95,7 +95,7 @@ function renderActivities(responseData) {
     title.classList.add("color-mine", "text-3xl");
     activitiesResponse.appendChild(title);
     //Loop through the activities array
-    activities.thingsToDo.forEach((activity) => {
+    activities.forEach((activity) => {
         console.log("looping through thingsToDo");
 
         //Create title for each element
@@ -117,7 +117,7 @@ function renderAccessories(responseData) {
     const accessoriesResponse = document.getElementById("accessoriesResponse");
 
     //Parse the JSON data from response
-    const accessories = JSON.parse(responseData.accessories);
+    const accessories = responseData.accessories;
     console.log(accessories);
 
     //Empty the accessories response container
@@ -187,6 +187,11 @@ function renderSubmitBtn(responseData) {
             "text-shadow",
             "save-trip",
         );
+        //Pull the city, state, and month from the input form value and add them to the responseData object (This is needed for the trip model)
+        responseData.city = document.getElementById("city").value;
+        responseData.state = document.getElementById("state").value;
+        responseData.month = document.getElementById("month").value;
+
         saveTripBtn.style.backgroundColor = "#99F2CD";
         saveTripBtn.addEventListener("click", async () => {
             try {
@@ -200,6 +205,7 @@ function renderSubmitBtn(responseData) {
                 if (!saveResponse.ok) {
                     throw new Error("Failed to save trip");
                 }
+                alert("Trip has been saved successfully!");
                 console.log("Trip saved successfully!");
             } catch (error) {
                 console.error(error);
@@ -223,12 +229,6 @@ function renderSubmitBtn(responseData) {
         });
         submitBtnContainer.appendChild(saveTripBtn);
         submitBtnContainer.appendChild(reloadBtn);
-
-        // // Create the submit button
-        // const submitBtn = document.createElement("button");
-
-        // submitBtn.textContent = "Save Trip";
-        // submitBtnContainer.appendChild(submitBtn);
     } else {
         console.log("Button no render :(");
     }

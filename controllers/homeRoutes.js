@@ -84,18 +84,14 @@ router.get("/journeys/:id", async (req, res) => {
 router.get("/trips", withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exlude: ["password"] },
+            attributes: { exclude: ["password"] },
             include: [
-                {
-                    model: User,
-                    attributes: ["username", "id"],
-                },
                 {
                     model: Trip,
                     attributes: [
                         "id",
                         "activities",
-                        "accesories",
+                        "accessories",
                         "funFact",
                         "city",
                         "state",
@@ -107,9 +103,10 @@ router.get("/trips", withAuth, async (req, res) => {
         });
 
         const user = userData.get({ plain: true });
+        console.log(user);
 
-        res.render("trips", {
-            ...user,
+        res.render("my-trips", {
+            user,
             logged_in: true,
         });
     } catch (err) {
