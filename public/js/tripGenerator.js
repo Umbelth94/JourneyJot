@@ -10,15 +10,20 @@ document.addEventListener("DOMContentLoaded", function () {
             responseCardTitle.textContent = "";
 
             // Get the values from the form
+            const loading = document.getElementById("loading");
+
             const city = document.getElementById("city").value;
             const upperCaseCity = city[0].toUpperCase() + city.slice(1);
             const state = document.getElementById("state").value;
             const activity = document.getElementById("activity").value;
             const month = document.getElementById("month").value;
             console.log(city, state, activity, month);
-
+            loading.remove();
+            const image = document.createElement("img");
+            image.src = "../images/waiting.avif";
             //Change the title to reflect the city that the user inputs
-            responseCardTitle.textContent = "Adventure to " + upperCaseCity;
+            responseCardTitle.textContent =
+                "Loading trip to " + upperCaseCity + "...";
             responseCardTitle.classList.add(
                 "font-bold",
                 "mb-10",
@@ -26,8 +31,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 "text-shadow",
                 "text-5xl",
                 "mt-5",
+                "font-extrabold",
+                "color-mine",
             );
-
+            image.classList.add(
+                "my-10",
+                "text-center",
+                "text-shadow",
+                "rounded-2xl",
+                "w-8/12",
+                "mx-auto",
+            );
+            responseCardTitle.appendChild(image);
             // Call the response function with the form values
 
             try {
@@ -43,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 const responseData = await response.json();
+                image.remove();
                 renderResponse(responseData);
             } catch (error) {
                 console.error(error);
@@ -60,6 +76,18 @@ function renderActivities(responseData) {
     console.log(activities);
 
     activitiesResponse.innerHTML = "";
+    const city = document.getElementById("city").value;
+    const upperCaseCity = city[0].toUpperCase() + city.slice(1);
+    const responseCardTitle = document.getElementById("responseCardHeader");
+    responseCardTitle.textContent = "Adventure to " + upperCaseCity;
+    responseCardTitle.classList.add(
+        "font-bold",
+        "mb-10",
+        "text-center",
+        "text-shadow",
+        "text-5xl",
+        "mt-5",
+    );
 
     //Create the general title
     const title = document.createElement("h3");
