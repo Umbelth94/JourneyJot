@@ -40,7 +40,7 @@ Trip.init(
             },
         },
         funFact: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
         city: {

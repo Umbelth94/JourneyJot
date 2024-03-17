@@ -7,8 +7,8 @@ const openai = new chatGpt({
 async function response(city, state, activity, month) {
     const activitiesPrompt = {
         prompt: "Respond only using this JSON object with the properties included in this JSON object.  Respond with only valid JSON",
-        question: `List 5 things with a description for activities to do at/in ${city} ${state} if the focus of the trip is ${activity} in ${month}.  ThingsToDo should have a property called activity and a property called description.  Always respond with at least one activity`,
-        thingsToDo: [],
+        question: `List 5 things with a description for activities to do at/in ${city} ${state} if the focus of the trip is ${activity} in ${month}.  activities should have a property called activity and a property called description.  Always respond with at least one activity`,
+        activities: [],
     };
     console.log("activitiesPrompt", activitiesPrompt);
     const activitiesResponse = await openai.chat.completions.create({

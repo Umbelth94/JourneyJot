@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 const responseData = await response.json();
+                console.log(responseData);
                 image.remove();
                 renderResponse(responseData);
             } catch (error) {
@@ -72,7 +73,6 @@ function renderActivities(responseData) {
 
     //Parse the JSON data from response
     const activities = JSON.parse(responseData.activities);
-    console.log(responseData);
     console.log(activities);
 
     activitiesResponse.innerHTML = "";
@@ -95,7 +95,7 @@ function renderActivities(responseData) {
     title.classList.add("color-mine", "text-3xl");
     activitiesResponse.appendChild(title);
     //Loop through the activities array
-    activities.thingsToDo.forEach((activity) => {
+    activities.activities.forEach((activity) => {
         console.log("looping through thingsToDo");
 
         //Create title for each element
@@ -187,6 +187,13 @@ function renderSubmitBtn(responseData) {
             "text-shadow",
             "save-trip",
         );
+        //Pull the city, state, and month from the input form value (This is needed for the trip model)
+        responseData.activities = JSON.parse(responseData.activities);
+        responseData.accessories = JSON.parse(responseData.accessories);
+        responseData.city = document.getElementById("city").value;
+        responseData.state = document.getElementById("state").value;
+        responseData.month = document.getElementById("month").value;
+
         saveTripBtn.style.backgroundColor = "#99F2CD";
         saveTripBtn.addEventListener("click", async () => {
             try {
