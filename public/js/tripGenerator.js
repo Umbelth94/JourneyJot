@@ -205,6 +205,7 @@ function renderSubmitBtn(responseData) {
                 if (!saveResponse.ok) {
                     throw new Error("Failed to save trip");
                 }
+                alert("Trip has been saved successfully!");
                 console.log("Trip saved successfully!");
             } catch (error) {
                 console.error(error);
