@@ -72,7 +72,7 @@ function renderActivities(responseData) {
     const activitiesResponse = document.getElementById("activitiesResponse");
 
     //Parse the JSON data from response
-    const activities = JSON.parse(responseData.activities);
+    const activities = responseData.activities;
     console.log(activities);
 
     activitiesResponse.innerHTML = "";
@@ -95,7 +95,7 @@ function renderActivities(responseData) {
     title.classList.add("color-mine", "text-3xl");
     activitiesResponse.appendChild(title);
     //Loop through the activities array
-    activities.activities.forEach((activity) => {
+    activities.forEach((activity) => {
         console.log("looping through thingsToDo");
 
         //Create title for each element
@@ -117,7 +117,7 @@ function renderAccessories(responseData) {
     const accessoriesResponse = document.getElementById("accessoriesResponse");
 
     //Parse the JSON data from response
-    const accessories = JSON.parse(responseData.accessories);
+    const accessories = responseData.accessories;
     console.log(accessories);
 
     //Empty the accessories response container
@@ -187,9 +187,7 @@ function renderSubmitBtn(responseData) {
             "text-shadow",
             "save-trip",
         );
-        //Pull the city, state, and month from the input form value (This is needed for the trip model)
-        responseData.activities = JSON.parse(responseData.activities);
-        responseData.accessories = JSON.parse(responseData.accessories);
+        //Pull the city, state, and month from the input form value and add them to the responseData object (This is needed for the trip model)
         responseData.city = document.getElementById("city").value;
         responseData.state = document.getElementById("state").value;
         responseData.month = document.getElementById("month").value;
