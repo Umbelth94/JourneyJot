@@ -6,6 +6,7 @@
     <title>User Trips</title>
 </head>
 <body>
+    {{!-- We could possibly make this look better by just showing the user a limited amount of information, because as it is right now, it shows the same information as when they select their trip --}}
     <h1>Welcome, {{user.username}}!</h1>
     <h2>Your Trips:</h2>
         {{#each user.trips}}
