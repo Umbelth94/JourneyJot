@@ -1,4 +1,5 @@
-// var weather = require('weather-js');
+require("dotenv").config();
+var weather = require("weather-js");
 
 // Options:
 // search:     location name or zipcode
@@ -10,3 +11,15 @@
 
 //   console.log(JSON.stringify(result, null, 2));
 // });
+async function response(city, state) {
+    weather.find(
+        { search: `${city}, ${{ state }}`, degreeType: "F" },
+        function (err, result) {
+            if (err) console.log(err);
+
+            console.log(JSON.stringify(result, null, 2));
+        },
+    );
+}
+
+module.exports = { response };

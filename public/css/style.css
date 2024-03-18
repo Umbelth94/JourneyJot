@@ -225,7 +225,8 @@ input[name="slide"]:checked + label .description {
     filter: drop-shadow(0 0 0.75rem rgb(27, 27, 27));
 }
 
-.image:hover {
+.image:hover,
+.go-back:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
 }
@@ -244,7 +245,9 @@ input[name="slide"]:checked + label .description {
 #submit:hover,
 #titles:hover,
 .save-trip:hover,
-.new-trip:hover {
+.new-trip:hover,
+.card-trip:hover,
+.go-adventures:hover {
     filter: drop-shadow(0 0 0.75rem #99f2cd);
     cursor: pointer;
 }
@@ -292,4 +295,38 @@ input[name="option"]:checked + img {
 
 .lists {
     list-style-type: square;
+}
+
+.btn-delete-trip {
+    background-color: rgb(243, 86, 86);
+    border: solid 2px rgb(243, 86, 86);
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+}
+
+.btn-delete-trip:hover {
+    filter: drop-shadow(0 0 0.75rem rgb(243, 86, 86));
+}
+
+.go-back {
+    background-color: #99f2cd;
+    color: black;
+    border-radius: 30px;
+    border: solid 2px #99f2cd;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.473);
+    filter: drop-shadow(0 0 0.1rem #000000);
+}
+
+.go-adventures {
+    background-color: #99f2cd;
+    color: black;
+    border-radius: 30px;
+    border: solid 2px #99f2cd;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.473);
+    filter: drop-shadow(0 0 0.1rem #000000);
 }
