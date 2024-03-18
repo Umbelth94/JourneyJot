@@ -7,36 +7,34 @@
 </head>
 <body>
     {{!-- We could possibly make this look better by just showing the user a limited amount of information, because as it is right now, it shows the same information as when they select their trip --}}
-    <h1>Welcome, {{user.username}}!</h1>
-    <h2>Your Trips:</h2>
+    <h1 class="pl-10 text-5xl color-mine font-extrabold pt-5 text-shadow">Welcome, {{user.username}}!</h1>
+    <h2 class="pl-16 text-4xl font-bold color-mine text-shadow my-5">Check out your trips:</h2>
+    {{#unless user.trips}}
+    <div class="py-40 text-center">
+        <h1 class="text-3xl font-extrabold mb-10">There are no trips yet!</h1>
+        <a href="/adventures" class="go-adventures text-2xl font-bold"><button>Create your first adventure</button></a>
+    </div>
+    {{/unless}}
         {{#each user.trips}}
-        <section class="blog-container">
+        <section class="blog-container mx-64 mt-10 card-trip">
         <a href="api/trips/{{this.id}}">
             <ul>
                     <li>
-                        <strong><h3>Trip To {{this.city}}, {{this.state}}</h3></strong><br>
-                        <strong>Activities:</strong>
+                        <strong><h3 class="color-mine text-4xl text-center">Trip to: {{this.city}}, {{this.state}}</h3></strong><br>
+                        <strong class="text-2xl color-mine">Activities:</strong>
                         <ul>
                             {{#each this.activities}}
-                                <strong><li>{{this.activity}}</li></strong>
-                                <li>{{this.description}}</li>
+                                <strong><li class="text-xl pl-5">~ {{this.activity}}</li></strong>
+                                <li class="text-lg pl-12 pb-2">{{this.description}}</li>
                             {{/each}}
                         </ul>
-                        <strong>Accessories:</strong> 
-                        <ul>
-                            {{#each this.accessories.items}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                        </ul>
-                        <strong>Fun Fact:</strong> {{this.funFact}}<br>
-                        <strong>City:</strong> {{this.city}}<br>
-                        <strong>State:</strong> {{this.state}}<br>
-                        <strong>Month:</strong> {{this.month}}<br>
+                    <p class="text-center text-4xl py-10 font-extrabold">Click on the card for more details!</p>
                     </li>
             </ul>
         </a>   
-        <button id="click" class="btn-delete text-2xl text-black text-shadow" data-id="{{this.id}}" style="background-color:#99F2CD">Delete </button>
     </section>
         {{/each}}
 </body>
 </html>
+
+<script src="/js/delete-trip.js"></script>

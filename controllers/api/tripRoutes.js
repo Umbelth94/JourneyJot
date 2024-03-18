@@ -50,14 +50,19 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // Delete Trip Route
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
     try {
-        const tripData = await Trip.findByPk(req.params.id);
-        console.log(tripData);
-        if (!tripData) {
-            return res.status(404).json({ error: "Trip not found." });
+        const trip = await Trip.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+
+        if (!trip) {
+            res.status(404).json({ error: "Trip not found." });
+            return;
         }
-        await tripData.destroy();
 
         res.status(200).json({ message: "Trip deleted successfully" });
     } catch (error) {
