@@ -28,8 +28,10 @@ Organize your trips and treks with JourneyJot! This application will allow users
 -   [Acceptance-Criteria](#acceptance-criteria)
 -   [Installation](#installation-📋)
 -   [Usage](#usage-🏁)
--   [Demonstration](#demonstration)
--   [Author](#author-👋🏽)
+-   [Dependancies](#dependancies)
+-   [Credits](#credits)
+-   [License](#license)
+-   [Authors](#authors-👋🏽)
 
 ## User Story
 
@@ -39,7 +41,7 @@ AS A traveler: I WANT to prepare for a trip with what to pack, the weather and p
 
 Users can clone the repository to a local machine by running `git clone https://github.com/Umbelth94/JourneyJot.git`
 
-Once the repo is set the user can continue to install all the dependacies needed by running `npm install`. Log into mysql by using `mysql -u root -p` and typying your password. Once you are logged in, set up the databases by running `SOURCE db/schema.sql` and run the seeds by running `npm run seed`.
+Once the repo is set the user can continue to install all the dependacies needed by running `npm install`. A .env page will need to be created with the users mysql credentials and an openai key. Log into mysql by using `mysql -u root -p` and typying your password. Once you are logged in, set up the databases by running `SOURCE db/schema.sql` and run the seeds by running `npm run seed`.
 
 Once all the initial start up commands are completed, the user can start the server by running `node server.js`.
 
@@ -47,29 +49,61 @@ Once all the initial start up commands are completed, the user can start the ser
 
 This project is deployed [here](https://journey-jot-decc05f3600a.herokuapp.com/) using Heroku.
 
-## Authors 👋🏽
+The user sign up and create an account to use the application. Once the user has signed up, they can access all of the features of the app. The user can log a journey to the newsfeed that can be viewed by everyone. They can also go to the 'Plan a Trip' page and put in where they would like to go, the activities they would like to focus on and the month and JourneyJot will put together suggestions for the user. They can then save those suggestions to the 'My Trips' page.
 
-Megan Schneider | [schneidsmc](https://github.com/schneidsmc)
-Sergio Ardila | [Stroyer210](https://github.com/Stroyer210)
-Travis Umbel | [Umbelth94](https://github.com/Umbelth94)
+This is the homepage.
+<br>
+<img src="./public/images/homepage.png" alt="homepage" width="300" height="auto"><img src="./public/images/homepage-animation.gif" alt="homepage-animation" width="300" height="auto">
 
-# JourneyJot
+This is the login screen.
+<br>
+<img src="./public/images/login.png" alt="login" width="300" height="auto">
+</br>
 
-An app for helping a user plan out a trip and share their experiences!
+## Dependancies
 
-NPM Packages:
+These are the packages we installed to create this project:
 
--   [WeatherJS](https://www.npmjs.com/package/weather-js)
--   [Mysql2](https://www.npmjs.com/package/mysql2)
--   [Sequelize](https://www.npmjs.com/package/sequelize)
 -   [Bcrypt](https://www.npmjs.com/package/bcrypt)
+-   [body-parser](https://www.npmjs.com/package/body-parser)
 -   [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 -   [dotenv](https://www.npmjs.com/package/dotenv)
--   [express](https://expressjs.com/)
--   [express-session](https://www.npmjs.com/package/express-session)
--   [express-handlebars](https://www.npmjs.com/package/express-handlebars)
--   [husky](https://typicode.github.io/husky/)
 -   [eslint](https://eslint.org/)
+-   [express](https://expressjs.com/)
+-   [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+-   [express-session](https://www.npmjs.com/package/express-session)
+-   [husky](https://typicode.github.io/husky/)
+-   [Mysql2](https://www.npmjs.com/package/mysql2)
+-   [nodemon](https://nodemon.io/)
+-   [openai](https://platform.openai.com/overview)
 -   [prettier](https://prettier.io/docs/en/install)
+-   [Sequelize](https://www.npmjs.com/package/sequelize)
+-   [tailwind](https://tailwindui.com/)
 
-# TO DO
+## Credits
+
+List of the links that made us succeed this project:
+
+-   https://www.geeksforgeeks.org/how-to-create-an-image-element-dynamically-using-javascript/
+-   https://unsplash.com/s/photos/travel
+-   https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
+-   https://sentry.io/answers/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript/#:~:text=The%20Solution&text=The%20toUpperCase()%20method%20converts,not%20alter%20the%20original%20string.
+-   https://www.youtube.com/watch?v=o1NikOxElqE
+-   https://www.youtube.com/watch?v=A7ga_EKgGK4
+-   https://www.youtube.com/watch?v=cSuEAD-Tnd4
+
+## License
+
+ISC License (ISC)
+
+Copyright (c) 2024 Megan Schneider, Sergia S. Ardila-Alvarado, Travis Umbel
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+## Authors 👋🏽
+
+<br>Megan Schneider | [schneidsmc](https://github.com/schneidsmc)</br>
+<br>Sergio Ardila-Alvarado | [Stroyer210](https://github.com/Stroyer210)</br>
+<br>Travis Umbel | [Umbelth94](https://github.com/Umbelth94)</br>
