@@ -48,4 +48,22 @@ router.get("/:id", withAuth, async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
+// Delete Trip Route
+router.delete("/:id", async (req, res) => {
+    try {
+        const tripData = await Trip.findByPk(req.params.id);
+        console.log(tripData);
+        if (!tripData) {
+            return res.status(404).json({ error: "Trip not found." });
+        }
+        await tripData.destroy();
+
+        res.status(200).json({ message: "Trip deleted successfully" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 module.exports = router;
